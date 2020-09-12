@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express=require("express");
 const http=require('http');
 const path=require("path");
@@ -11,8 +10,8 @@ var mongoose=require("mongoose"),
     flash=require("connect-flash");
     Room=require("./models/room");
 
-const pass=process.env.PASSWORD;
-mongoose.connect(`mongodb+srv://touquir:${pass}@cluster0.0yhpg.mongodb.net/<dbname>?retryWrites=true&w=majority`, {
+var PORT=process.env.DATABASEURL || 'mongodb://localhost:27017/chatapp';
+mongoose.connect(PORT, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify:false
